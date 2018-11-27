@@ -18,7 +18,7 @@ class Movie(db.Model):
     cast = db.Column(db.String(120))
     genre = db.Column(db.String(120))
     wikipage = db.Column(db.String(120))
-    plot = db.Column(db.String(120))
+    plot = db.Column(db.String(600))
 
 
     def __init__(self, releaseyear, title, originethno, director, cast, genre, wikipage, plot):
@@ -186,7 +186,7 @@ def remove():
             return render_template('index2.html')
         else:
             error2 = "That movie is not in the database."
-            return render_template('index2.html', movies = movielist, error2 = error2)
+            return render_template('index2.html', error2 = error2)
 
 @app.route("/search", methods =['GET', 'POST'])
 def search():
