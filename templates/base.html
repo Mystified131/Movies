@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>
+            <title>Movies</title>
+
+            <link rel="stylesheet" href = "/static/bootstrapscr.css">
+
+    </head>
+    <body style = "background-color: rgb(174, 210, 245);">
+<br><br>
+    {% block content %}
+    {% endblock %}
+
+    {% with messages = get_flashed_messages() %}
+
+    {% for message in messages %}
+        <p><em>{{message}}</em></p><br>
+
+        {% endfor %}
+{% endwith %}
+
+<p align = "center">Please click <a href = "/movies">here</a> for the home page.</p>
+<p align = "center">Press <a href = "/logout">here</a> to logout.</p>
+
+</body>
+<foot align = center>
+        <h6>Public Domain Mark 1.0</h6>
+        </foot>
+        <br><br>
+</html>
