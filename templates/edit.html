@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+
+<form action = '/edit' method = 'POST' align = "center">
+
+<label> Please enter the title of a movie to edit.<br><br>
+    <input name="edittitle" type="text" value = "" />
+    </label>
+        <br><br>
+
+<h2>Please enter the new details for the movie.</h2>
+
+
+  <label> Please enter the new release year of the movie.<br><br>
+          <input name="releaseyear" type = "text" value = "" />
+        </label>
+
+<br><br>
+
+<label> Please enter the new origin/ethnicity of the movie.<br><br>
+    <input name="originethno" type="text" value = "" />
+</label>
+
+<br><br>
+
+<label> Please enter the new director of the movie.<br><br>
+    <input name="director" type="text" value = "" />
+</label>
+
+<br><br>
+
+<label> Please enter the new cast of the movie.<br><br>
+    <input name="cast" type="text" value = "" />
+</label>
+
+<br><br>
+
+<label> Please enter the new genre of the movie.<br><br>
+    <input name="genre" type="text" value = "" />
+</label>
+
+<br><br>
+
+<label> Please enter the new wiki page of the movie.<br><br>
+    <input name="wikipage" type="text" value = "" />
+</label>
+
+<br><br>
+
+<label> Please enter the new plot of the movie.<br><br>
+    <input name="plot" type="text" value = "" />
+</label>
+
+<br><br>
+
+<input type="submit" />
+
+<br><br>
+{{error}}
+<br>
+
+</div>
+</form>
+
+<br><br>
+
+    {% endblock %}

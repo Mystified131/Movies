@@ -221,7 +221,41 @@ def search():
             error = "That text was not found in the database."
             return render_template('search.html', error = error)
         
-
+@app.route("/edit", methods =['GET', 'POST'])
+def edit():
+    if request.method == "GET":
+        return render_template('edit.html', movie = "")
+    if request.method == "POST":
+        edittitle = request.form['edittitle']
+        edittitle = cgi.escape(edittitle)
+        movie = Movie.query.filter_by(title = edittitle).first()
+        if not movie or not edittitle:
+            error = "That movie was not found in the database."
+            return render_template('edit.html', error = error)
+        else:
+            moviereleaseyear = request.form['releaseyear']
+            movieoriginethno = request.form['originethno']
+            moviedirector = request.form['director']
+            moviecast = request.form['cast']
+            moviegenre = request.form['genre']
+            moviewikipage = request.form['wikipage']
+            movieplot = request.form['plot']
+            moviereleaseyear = cgi.escape(moviereleaseyear)
+            movieoriginethno = cgi.escape(movieoriginethno)
+            moviedirector = cgi.escape(moviedirector)
+            moviecast = cgi.escape(moviecast)
+            moviegenre = cgi.escape(moviegenre)
+            moviewikipage = cgi.escape(moviewikipage)
+            movieplot = cgi.escape(movieplot)
+            movie.releaseyear = moviereleaseyear
+            movie.originethno = movieoriginethno
+            movie.director = moviedirector
+            movie.cast = moviecast
+            movie.genre = moviegenre
+            movie.wikipage = moviewikipage
+            movie.plot = movieplot
+            db.session.commit()
+            return render_template('index2.html')
 
 
 ## THE GHOST OF THE SHADOW ##
