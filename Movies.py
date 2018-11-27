@@ -195,7 +195,7 @@ def search():
     if request.method == "POST":
         searchterm = request.form['searchterm']
         searchterm = cgi.escape(searchterm)
-        searchterm.lower()
+        searchterm = searchterm.lower()
         foundmovies = []
         movies = Movie.query.all()
         for movie in movies:
