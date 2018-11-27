@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<body>
+
+<div align= "center">
+<div id=box>
+
+  <h1>Movies</h1>
+  <div align=center>
+        <div id=box>
+    <form action = '/search' method = 'POST' align = "center">
+    
+        <h2>Search the movie database.</h2><br>
+        <label> Please enter text for which to search.</label><br><br>
+                <input name="searchterm" type="text" value = "" />
+    <br><br>
+    <input type="submit" />
+
+<br><br>
+
+<div align=center>
+    <div id=box>
+    <h5>Here are the movies we found with your search term (not case-sensitive):</h5><br>
+
+    <h6>By Title/ Release Year/ Origin-Ethnicity/ Director/ Cast/ Genre/ Wiki Page/ Plot</h6><br>
+
+    <ul align = "left">
+        {% for movie in movies %}
+        <li>{{movie}}</li>
+        {% endfor %}
+    </ul>
+<br><br>
+
+{{error}}
+    
+<br><br>
+
+    </div>
+    {% endblock %}

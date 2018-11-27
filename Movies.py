@@ -188,6 +188,42 @@ def remove():
             error2 = "That movie is not in the database."
             return render_template('index2.html', movies = movielist, error2 = error2)
 
+@app.route("/search", methods =['GET', 'POST'])
+def search():
+    if request.method == "GET":
+        return render_template('search.html')
+    if request.method == "POST":
+        searchterm = request.form['searchterm']
+        searchterm = cgi.escape(searchterm)
+        searchterm.lower()
+        foundmovies = []
+        movies = Movie.query.all()
+        for movie in movies:
+            testtitle = movie.title.lower()
+            testreleaseyear = str(movie.releaseyear)
+            testoriginethno = movie.originethno.lower()
+            testdirector = movie.director.lower()
+            testcast = movie.cast.lower()
+            testgenre = movie.genre.lower()
+            testwikipage = movie.wikipage.lower()
+            testplot = movie.plot.lower()
+            if searchterm in testtitle or searchterm in testreleaseyear or searchterm in testoriginethno or searchterm in testdirector or searchterm in testcast or searchterm in testgenre or searchterm in testwikipage or searchterm in testplot:
+                foundmovies.append(movie)
+        if foundmovies:
+            movielist = []
+            for movie in foundmovies:
+                relyr = str(movie.releaseyear)
+                moviestr = movie.title + ": " + relyr + "/ " + movie.originethno + "/ " + movie.director + "/ " + movie.cast + "/ " + movie.genre + "/ " + movie.wikipage + "/ " + movie.plot
+                movielist.append(moviestr)
+            movielist.sort()
+            return render_template('search.html', movies = movielist)
+        else:
+            error = "That text was not found in the database."
+            return render_template('search.html', error = error)
+        
+
+
+
 ## THE GHOST OF THE SHADOW ##
 
 if __name__ == '__main__':
