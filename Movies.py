@@ -18,7 +18,7 @@ class Movie(db.Model):
     cast = db.Column(db.String(120))
     genre = db.Column(db.String(120))
     wikipage = db.Column(db.String(120))
-    plot = db.Column(db.String(600))
+    plot = db.Column(db.String(1200))
 
 
     def __init__(self, releaseyear, title, originethno, director, cast, genre, wikipage, plot):
