@@ -131,10 +131,6 @@ def index():
     movielist.sort()
     return render_template('list.html', movies = movielist)
 
-@app.route("/login", methods =['GET', 'POST'])
-def frontpage():
-    return render_template('login.html')
-
 @app.route("/add", methods =['GET', 'POST'])
 def add():
     if request.method == "GET":
